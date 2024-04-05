@@ -74,12 +74,19 @@ fun PantallaPrincipal(modifier: Modifier = Modifier){
      var cont by rememberSaveable {
         mutableStateOf(0)
     }
+    var mostrarTarea by rememberSaveable {
+        mutableStateOf(true)
+    }
     Column {
         ContadorAgua(
             cont = cont,
             onClick = { cont++ },
             onClear = {cont=0}
         )
+        if(cont>0 && mostrarTarea){
+            TareaItem(taskName = "Beber más agua", onClose = { mostrarTarea=false})
+        }
+
 
     }
 
